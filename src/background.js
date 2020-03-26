@@ -1,6 +1,13 @@
 "use strict";
 
-import { app, protocol, BrowserWindow, ipcMain, Menu, globalShortcut } from "electron";
+import {
+  app,
+  protocol,
+  BrowserWindow,
+  ipcMain,
+  Menu,
+  globalShortcut
+} from "electron";
 import {
   createProtocol
   /* installVueDevtools */
@@ -15,7 +22,6 @@ let win;
 protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } }
 ]);
-
 
 ipcMain.on("min", (e) => win.minimize());
 ipcMain.on("max", (e) => {
@@ -32,13 +38,13 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1002,
     height: 670,
-    minHeight:670,
-    minWidth:1002,
-    frame:false,
+    minHeight: 670,
+    minWidth: 1002,
+    frame: false,
     webPreferences: { webSecurity: false, nodeIntegration: true },
     icon: `${__static}/app.ico`
   });
-  console.log(__static)
+  console.log(__static);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -58,28 +64,7 @@ function createWindow() {
 // 设置菜单栏
 function createMenu() {
   // darwin表示macOS，针对macOS的设置
-  if (process.platform === "darwin") {
-    const template = [
-      {
-        label: "App Demo",
-        submenu: [
-          {
-            label:"关于",
-            role: "about"
-          },
-          {
-            label:"退出",
-            role: "quit"
-          }
-        ]
-      }
-    ];
-    let menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
-  } else {
-    // windows及linux系统
-    Menu.setApplicationMenu(null);
-  }
+  
 }
 
 // Quit when all windows are closed.
@@ -120,7 +105,13 @@ app.on("ready", async () => {
   globalShortcut.register("CommandOrControl+Shift+i", function() {
     win.webContents.openDevTools();
   });
-
+  if (process.platform === "darwin") {
+    let menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+  } else {
+    // windows及linux系统
+    Menu.setApplicationMenu(null);
+  }
   createWindow();
 });
 
@@ -138,3 +129,61 @@ if (isDevelopment) {
     });
   }
 }
+
+/**
+ * 注册键盘快捷键
+ */
+let template = [
+  {
+    label: "Edit ( 操作 )",
+    submenu: [
+      {
+        label: "Copy ( 复制 )",
+        accelerator: "CmdOrCtrl+C",
+        role: "copy"
+      },
+      {
+        label: "Paste ( 粘贴 )",
+        accelerator: "CmdOrCtrl+V",
+        role: "paste"
+      },
+      {
+        label: "Reload ( 重新加载 )",
+        accelerator: "CmdOrCtrl+R",
+        click: function(item, focusedWindow) {
+          if (focusedWindow) {
+            // on reload, start fresh and close any old
+            // open secondary windows
+            if (focusedWindow.id === 1) {
+              BrowserWindow.getAllWindows().forEach(function(win) {
+                if (win.id > 1) {
+                  win.close();
+                }
+              });
+            }
+            focusedWindow.reload();
+          }
+        }
+      }
+    ]
+  },
+  {
+    label: "Window ( 窗口 )",
+    role: "window",
+    submenu: [
+      {
+        label: "Minimize ( 最小化 )",
+        accelerator: "CmdOrCtrl+M",
+        role: "minimize"
+      },
+      {
+        label: "Close ( 关闭 )",
+        accelerator: "CmdOrCtrl+W",
+        role: "close"
+      },
+      {
+        type: "separator"
+      }
+    ]
+  }
+];
