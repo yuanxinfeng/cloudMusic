@@ -4,8 +4,34 @@
  * @Github: https://github.com/yuanxinfeng
  * @Date: 2019-07-09 09:00:41
  * @LastEditors: Jasper
- * @LastEditTime: 2020-03-23 15:42:01
+ * @LastEditTime: 2020-03-26 14:19:27
  */
+
+const foramt = (time, fmt = "yyyy-MM-dd hh:mm:ss") => {
+  let date = new Date(time);
+  let o = {
+    "M+": date.getMonth() + 1, //月份
+    "d+": date.getDate(), //日
+    "h+": date.getHours(), //小时
+    "H+": date.getHours(), //小时
+    "m+": date.getMinutes(), //分
+    "s+": date.getSeconds(), //秒
+    "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+    S: date.getMilliseconds() //毫秒
+  };
+  if (/(y+)/.test(fmt))
+    fmt = fmt.replace(
+      RegExp.$1,
+      (date.getFullYear() + "").substr(4 - RegExp.$1.length)
+    );
+  for (let k in o)
+    if (new RegExp("(" + k + ")").test(fmt))
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length)
+      );
+  return fmt;
+};
 
 /**
  * @description: 毫秒返回 yyyy-MMM-dd hh:mm
@@ -168,6 +194,7 @@ const splitString = (string) => {
   if (string) return `${string.split("\n")[0]}...`;
 };
 export default {
+  foramt,
   parseTime,
   formatTime,
   foramtDuration,
