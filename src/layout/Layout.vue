@@ -4,7 +4,7 @@
  * @Github: https://github.com/yuanxinfeng
  * @Date: 2020-03-20 16:20:44
  * @LastEditors: Jasper
- * @LastEditTime: 2020-03-26 09:33:12
+ * @LastEditTime: 2020-04-08 16:08:11
  -->
 <template>
     <el-container>
@@ -12,7 +12,7 @@
             <Header></Header>
         </el-header>
         <el-container>
-            <el-aside>
+            <el-aside v-if="currentNav!=='mv'">
                 <Aside></Aside>
             </el-aside>
             <el-main>
@@ -38,11 +38,12 @@ import { mapGetters } from "vuex";
 export default {
     data() {
         return {
-            dialog: false
+            dialog: false,
+            aside: true
         };
     },
     computed: {
-        ...mapGetters(["personalizedShow", "coyp_right"])
+        ...mapGetters(["personalizedShow", "coyp_right","currentNav"])
     },
     components: {
         Header,

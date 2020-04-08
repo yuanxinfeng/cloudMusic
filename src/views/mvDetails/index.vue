@@ -4,22 +4,49 @@
  * @Github: https://github.com/yuanxinfeng
  * @Date: 2019-07-11 15:34:24
  * @LastEditors: Jasper
- * @LastEditTime: 2019-07-11 15:37:11
+ * @LastEditTime: 2020-04-08 16:38:05
  -->
  <template>
-  <div>mvid:{{mvid}}</div>
+    <div class="mv">
+        <video
+            :src="mvDetail.url"
+            controls
+        ></video>
+    </div>
 </template>
  
  <script>
+import { mvUrl } from "@/api/video";
 export default {
-  data() {
-    return {
-      mvid: 0
-    };
-  },
-  created() {
-    this.mvid = this.$route.query.mvid;
-  }
+    data() {
+        return {
+            mvid: 0,
+            mvDetail: {}
+        };
+    },
+    created() {
+        this.mvid = this.$route.query.mvid;
+        this.init();
+    },
+    methods: {
+        init() {
+            this.mv();
+        },
+        mv() {
+            mvUrl({ mvid: this.mvid }).then(res => {
+                this.mvDetail = res.data;
+            });
+        }
+    }
 };
 </script>
  
+
+<style lang="scss" scoped>
+.mv {
+    video {
+        width: 620px;
+        height: 350px;
+    }
+}
+</style>

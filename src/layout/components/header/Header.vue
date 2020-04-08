@@ -1,8 +1,16 @@
+<!--
+ * @Description: 
+ * @Author: Jasper
+ * @Github: https://github.com/yuanxinfeng
+ * @Date: 2020-03-20 16:20:44
+ * @LastEditors: Jasper
+ * @LastEditTime: 2020-04-08 16:05:09
+ -->
 <template>
     <div class="header-container" @dblclick="changeWindows(2)">
         <frame />
         <div class="category-container">
-            <component :is="currentNav" v-if="!(currentNav==='notitle')"></component>
+            <component :is="currentNav" v-if="(currentNav!=='notitle')"></component>
         </div>
         <div class="right-container">
             <search></search>
@@ -29,16 +37,6 @@ export default {
         changeWindows(index) {
             let item = ["close", "min", "max"];
             ipcRenderer.send(item[index]);
-        }
-    },
-    watch: {
-        $route(v) {
-            let WhiteList = ["findMusic"];
-            if (WhiteList.indexOf(v.meta.type) === -1) {
-                this.$store.dispatch("currentNav", "notitle");
-            } else {
-                this.$store.dispatch("currentNav", v.meta.type);
-            }
         }
     }
 };

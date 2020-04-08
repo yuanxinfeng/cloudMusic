@@ -6,7 +6,7 @@
     </div>
     <ul>
       <li v-for="(item,index) in tjmvList" :key="index" :style="{width:fourWidth+'px'}">
-        <router-link :to="`/playlists?id=${item.id}`">
+        <router-link :to="`/mvDetails?mvid=${item.id}`">
           <div class="header-img">
             <img
               :src="item.picUrl"

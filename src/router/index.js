@@ -16,45 +16,45 @@ export const constantRouterMap = [
         path: "recommend",
         component: require("@/views/findMusic/recommend/index").default,
         name: "recommend",
-        meta: { title: "个性推荐", type: "findMusic" }
+        meta: { title: "个性推荐", type: "findMusic" },
       },
       {
         path: "playlist",
         component: require("@/views/findMusic/playlist/index").default,
         name: "playlist",
-        meta: { title: "歌单", type: "findMusic" }
+        meta: { title: "歌单", type: "findMusic" },
       },
       {
         path: "dj",
         component: require("@/views/findMusic/dj/index").default,
         name: "dj",
-        meta: { title: "主播电台", type: "findMusic" }
+        meta: { title: "主播电台", type: "findMusic" },
       },
       {
         path: "top",
         component: require("@/views/findMusic/top/index").default,
         name: "top",
-        meta: { title: "排行榜", type: "findMusic" }
+        meta: { title: "排行榜", type: "findMusic" },
       },
       {
         path: "singer",
         component: require("@/views/findMusic/singer/index").default,
         name: "singer",
-        meta: { title: "歌手", type: "findMusic" }
+        meta: { title: "歌手", type: "findMusic" },
       },
       {
         path: "newmusic",
         component: require("@/views/findMusic/newmusic/index").default,
         name: "newmusic",
-        meta: { title: "最新音乐", type: "findMusic" }
+        meta: { title: "最新音乐", type: "findMusic" },
       },
       {
         path: "highquality",
         component: require("@/views/findMusic/playlist/highquality").default,
         name: "highquality",
-        meta: { title: "最新音乐", type: "findMusic" }
-      }
-    ]
+        meta: { title: "最新音乐", type: "findMusic" },
+      },
+    ],
   },
   {
     path: "/fm",
@@ -65,9 +65,9 @@ export const constantRouterMap = [
         path: "/fm/index",
         component: require("@/views/fm/index").default,
         name: "fm",
-        meta: { title: "私人FM" }
-      }
-    ]
+        meta: { title: "私人FM" },
+      },
+    ],
   },
   {
     path: "/video",
@@ -78,15 +78,9 @@ export const constantRouterMap = [
         path: "/video",
         component: require("@/views/video/video/index").default,
         name: "video",
-        meta: { title: "视频", type: "video" }
+        meta: { title: "视频", type: "video" },
       },
-      {
-        path: "/mv",
-        component: require("@/views/video/mv/index").default,
-        name: "mv",
-        meta: { title: "mv", type: "video" }
-      }
-    ]
+    ],
   },
   {
     path: "/friend",
@@ -97,9 +91,9 @@ export const constantRouterMap = [
         path: "/friend/index",
         component: require("@/views/friend/index").default,
         name: "friend",
-        meta: { title: "朋友" }
-      }
-    ]
+        meta: { title: "朋友" },
+      },
+    ],
   },
 
   {
@@ -111,9 +105,9 @@ export const constantRouterMap = [
         path: "/search/index",
         component: require("@/views/search/index").default,
         name: "search",
-        meta: { title: "搜索" }
-      }
-    ]
+        meta: { title: "搜索" },
+      },
+    ],
   },
   {
     path: "/artists",
@@ -124,9 +118,9 @@ export const constantRouterMap = [
         path: "/artists/index",
         component: require("@/views/artists/index").default,
         name: "artists",
-        meta: { title: "歌手" }
-      }
-    ]
+        meta: { title: "歌手" },
+      },
+    ],
   },
   {
     path: "/album",
@@ -137,9 +131,9 @@ export const constantRouterMap = [
         path: "/album/index",
         component: require("@/views/album/index").default,
         name: "album",
-        meta: { title: "专辑" }
-      }
-    ]
+        meta: { title: "专辑" },
+      },
+    ],
   },
   {
     path: "/mvDetails",
@@ -150,9 +144,9 @@ export const constantRouterMap = [
         path: "/mvDetails/index",
         component: require("@/views/mvDetails/index").default,
         name: "mvDetails",
-        meta: { title: "mv详情" }
-      }
-    ]
+        meta: { title: "mv详情" ,type:"mv"},
+      },
+    ],
   },
   {
     path: "/playlists",
@@ -163,9 +157,9 @@ export const constantRouterMap = [
         path: "/playlists/index",
         component: require("@/views/playlists/index").default,
         name: "playlists",
-        meta: { title: "歌单详情" }
-      }
-    ]
+        meta: { title: "歌单详情" },
+      },
+    ],
   },
   {
     path: "/payGiftLists",
@@ -176,9 +170,9 @@ export const constantRouterMap = [
         path: "/payGiftLists/index",
         component: require("@/views/payGiftLists/index").default,
         name: "payGiftLists",
-        meta: { title: "付费精品" }
-      }
-    ]
+        meta: { title: "付费精品" },
+      },
+    ],
   },
   {
     path: "/payGiftDetails",
@@ -189,9 +183,9 @@ export const constantRouterMap = [
         path: "/payGiftDetails/index",
         component: require("@/views/payGiftDetails/index").default,
         name: "payGiftDetails",
-        meta: { title: "付费精品详情" }
-      }
-    ]
+        meta: { title: "付费精品详情" },
+      },
+    ],
   },
 
   {
@@ -203,9 +197,9 @@ export const constantRouterMap = [
         path: "/djDetails/index",
         component: require("@/views/djDetails/index").default,
         name: "djDetails",
-        meta: { title: "dj详情" }
-      }
-    ]
+        meta: { title: "dj详情" },
+      },
+    ],
   },
   {
     path: "/user",
@@ -216,24 +210,24 @@ export const constantRouterMap = [
         path: "/user/index",
         component: require("@/views/user/index").default,
         name: "user",
-        meta: { title: "个人详情" }
-      }
-    ]
+        meta: { title: "个人详情" },
+      },
+    ],
   },
   {
     path: "/404",
-    component: require("@/views/errorPage/404").default
+    component: require("@/views/errorPage/404").default,
   },
   {
     path: "/login",
     meta: { title: "登录" },
-    component: require("@/views/login/index").default
-  }
+    component: require("@/views/login/index").default,
+  },
   // { path: '*', redirect: '/404', hidden: true }
 ];
 
 export default new Router({
   // mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+  routes: constantRouterMap,
 });

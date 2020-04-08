@@ -51,7 +51,6 @@ export default {
     },
     watch: {
         "$route.matched": function(v) {
-            console.log(v);
             this.back = true;
             this.go = true;
             this.$store.dispatch("currentPath", v[0].path ? v[0].path : "/");
